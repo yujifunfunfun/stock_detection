@@ -15,13 +15,15 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
 
 from common.google_spreadsheet import *
 from twitter.twitter_tweet import *
+from discord.discord_post import *
 
 
 def main():
     jan_list = download_target_jan('楽天')
 
     for jan in jan_list:
-      request_url = f'https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706?applicationId=1071977349781880110&keyword={jan}'
+      request_url = f'https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706?applicationId=1071977349781880110&keyword={jan}&affiliateId=2083377f.b6424a86.20833780.8ae00bf3'
+
 
       r = requests.get(request_url)
       resp = r.json()
@@ -33,6 +35,7 @@ def main():
           name = item['itemName']
           item_url = item['itemUrl']
           send_tweet(f'<楽天>\n{name}\n{item_url}')
+          send_discord(f'<楽天>\n{name}\n{item_url}')
           print(f'<楽天>\n\n{name}\n\n{item_url}')
       else:
           print('在庫なし')
