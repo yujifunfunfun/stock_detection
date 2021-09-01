@@ -1,0 +1,7 @@
+2021-09-01 12:58:15,526 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-01 12:58:18,533 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 在庫確認中
+2021-09-01 12:58:18,787 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 在庫あり:4571574970021
+2021-09-01 12:58:19,762 - ERROR - discord_post.py - discord.discord_post - send_discord - ('Connection aborted.', ConnectionResetError(10054, '既存の接続はリモート ホストに強制的に切断されました。', None, 10054, None))
+2021-09-01 12:58:21,307 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-01 12:58:24,322 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 在庫確認中
+2021-09-01 12:58:24,443 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 在庫なし:4580718640010

@@ -3,3 +3,7 @@ oauth2client
 pandas
 tweepy
 discordwebhook
+python-amazon-sp-api
+python-dotenv
+selenium
+webdriver_manager
