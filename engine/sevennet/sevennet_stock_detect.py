@@ -47,11 +47,11 @@ def check_stock():
         # 在庫確認
         logger.info('在庫確認中')
 
-        if driver.find_elements_by_class_name('js-pressTwice'):
+        if driver.find_elements_by_class_name('cartBtn'):
              
              logger.info(f"在庫あり:{jan}")
              name = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/div[2]/div[1]/p[1]/a')
-             url = name.get_attribute("href")
+             url = name.get_attribute("href")     
              src = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/p/a/img').get_attribute("src")
              responce = requests.get(src)
              with open("img/" + "1.jpg", "wb") as f:
