@@ -21,3 +21,10 @@ def send_discord(text):
         discord.post(content=text)
     except Exception as e:
         logger.error(e)
+
+def send_discord_with_img(text):
+    try:
+        with open('img/1.jpg', 'rb') as f:
+            discord.post(content=text, file={ "attachment": f })
+    except Exception as e:
+        logger.error(e)

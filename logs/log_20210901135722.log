@@ -1,0 +1,9 @@
+2021-09-01 13:57:28,754 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-01 13:57:31,757 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 在庫確認中
+2021-09-01 13:57:31,873 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 在庫あり:4571574970021
+2021-09-01 13:57:34,500 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-01 13:57:37,504 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 在庫確認中
+2021-09-01 13:57:37,543 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 在庫なし:4580718640010
+2021-09-01 13:57:38,718 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-01 13:57:41,723 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 在庫確認中
+2021-09-01 13:57:41,750 - INFO - sevennet_stock_detect.py - __main__ - check_stock - 在庫あり:4902370547672

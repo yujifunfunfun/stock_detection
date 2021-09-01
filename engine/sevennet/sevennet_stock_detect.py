@@ -22,12 +22,12 @@ logger = set_logger(__name__)
 def start_chrome():
     global option
     option = Options()                         
-    # option.add_argument('--headless') 
-    # option.add_argument('--lang=ja-JP')
-    # option.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36')
-    # option.add_argument('--ignore-certificate-errors')
-    # option.add_argument('--ignore-ssl-errors')
-    # option.add_argument('--incognito') 
+    option.add_argument('--headless') 
+    option.add_argument('--lang=ja-JP')
+    option.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36')
+    option.add_argument('--ignore-certificate-errors')
+    option.add_argument('--ignore-ssl-errors')
+    option.add_argument('--incognito') 
     option.add_argument("window-size=1500,1000")
     #ここで、バージョンなどのチェックをする
     global driver
@@ -52,14 +52,13 @@ def check_stock():
              logger.info(f"在庫あり:{jan}")
              name = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/div[2]/div[1]/p[1]/a')
              url = name.get_attribute("href")
-
              src = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/p/a/img').get_attribute("src")
              responce = requests.get(src)
              with open("img/" + "1.jpg", "wb") as f:
                  f.write(responce.content)
 
              send_tweet_with_img(f'<セブンネット>\n{name.text}\n{url}')
-             send_discord(f'<セブンネット>\n{name.text}\n{url}')
+             send_discord_with_img(f'<セブンネット>\n{name.text}\n{url}')
              print(f'<セブンネット>\n{name.text}\n\n{url}')
         else:
             logger.info(f"在庫なし:{jan}")
