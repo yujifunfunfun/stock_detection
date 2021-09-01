@@ -36,32 +36,35 @@ def start_chrome():
 
 def check_stock():
     jan_list = download_target_jan('セブンネット')
-    
+    affiliate_urls = download_affiliate_url('セブンネット')
 
-    for jan in jan_list:
-        # 商品ページへ遷移
-        driver.get(f"https://7net.omni7.jp/search/?keyword={jan}")
-        logger.info('商品ページへ遷移しました')
-        time.sleep(3)
-
-        # 在庫確認
-        logger.info('在庫確認中')
-
-        if driver.find_elements_by_class_name('cartBtn'):
-             
-             logger.info(f"在庫あり:{jan}")
-             name = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/div[2]/div[1]/p[1]/a')
-             url = name.get_attribute("href")     
-             src = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/p/a/img').get_attribute("src")
-             responce = requests.get(src)
-             with open("img/" + "1.jpg", "wb") as f:
-                 f.write(responce.content)
-
-             send_tweet_with_img(f'<セブンネット>\n{name.text}\n{url}')
-             send_discord_with_img(f'<セブンネット>\n{name.text}\n{url}')
-             print(f'<セブンネット>\n{name.text}\n\n{url}')
+    for jan,url in zip(jan_list,affiliate_urls):
+        
+        if jan == '':
+            pass
         else:
-            logger.info(f"在庫なし:{jan}")
+            # 商品ページへ遷移
+            driver.get(f"https://7net.omni7.jp/search/?keyword={jan}")
+            logger.info('商品ページへ遷移しました')
+            time.sleep(3)
+
+            # 在庫確認
+            logger.info('在庫確認中')
+
+            if driver.find_elements_by_class_name('cartBtn'):
+                
+                logger.info(f"在庫あり:{jan}")
+                name = driver.find_element_by_class_name('productName')
+                src = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/p/a/img').get_attribute("src")
+                responce = requests.get(src)
+                with open("img/" + "1.jpg", "wb") as f:
+                    f.write(responce.content)
+
+                send_tweet_with_img(f'<セブンネット>\n{name.text}\n{url}')
+                send_discord_with_img(f'<セブンネット>\n{name.text}\n{url}')
+                print(f'<セブンネット>\n{name.text}\n\n{url}')
+            else:
+                logger.info(f"在庫なし:{jan}")
             
 def main():
     start_chrome()

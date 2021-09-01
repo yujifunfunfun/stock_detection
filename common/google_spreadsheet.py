@@ -32,4 +32,23 @@ def download_target_jan(site):
 
     return url_list
 
+def download_affiliate_url(site):
+
+    scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(JSON_PATH, scope)
+    gc = gspread.authorize(credentials)
+
+    if site == '楽天':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(0)
+    elif site == 'Yahoo':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(1)
+    elif site == 'Amozon':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(2)
+    elif site == 'セブンネット':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(3)
+
+    url_list = worksheet.col_values(2)
+
+    return url_list
+
 
