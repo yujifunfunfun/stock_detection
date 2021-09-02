@@ -10,6 +10,7 @@ import pandas as pd
 import urllib.parse
 import os
 from os.path import join, dirname
+import pandas as pd
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
@@ -49,7 +50,7 @@ def rakuten_stock_detect():
             logger.info('在庫確認中')
             if len(resp["Items"]) >= 1:
                 if jan in rakuten_df.values.astype(str):
-                    pass
+                    logger.info(f'ツイート済みの商品{jan}')
                 else:
                     logger.info(f"在庫あり:{jan}")
                     item = resp['Items'][0]['Item']
@@ -67,7 +68,7 @@ def rakuten_stock_detect():
                 logger.info(f"在庫なし:{jan}")
                 if jan in rakuten_df.values.astype(str):
                     delete_jan = rakuten_df.replace(int(jan), 'soldout')
-                    delete_jan.to_csv('sevennet_jan.csv', index=False,header=None)
+                    delete_jan.to_csv('rakuten_jan.csv', index=False,header=None)
 
 
 if __name__ == "__main__":

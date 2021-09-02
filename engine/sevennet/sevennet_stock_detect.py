@@ -58,7 +58,8 @@ def check_stock():
             if driver.find_elements_by_class_name('cartBtn'):
                 logger.info(f"在庫あり:{jan}")
                 if jan in sevennet_df.values.astype(str):
-                    pass
+                    logger.info('ツイート済みの商品')
+
                 else:
                     name = driver.find_element_by_class_name('productName')
                     src = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/p/a/img').get_attribute("src")

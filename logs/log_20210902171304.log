@@ -1,0 +1,4 @@
+2021-09-02 17:13:06,353 - INFO - rakuten_stock.py - __main__ - rakuten_stock_detect - 在庫確認中
+2021-09-02 17:13:06,354 - INFO - rakuten_stock.py - __main__ - rakuten_stock_detect - ツイート済みの商品
+2021-09-02 17:13:06,473 - INFO - rakuten_stock.py - __main__ - rakuten_stock_detect - 在庫確認中
+2021-09-02 17:13:06,473 - INFO - rakuten_stock.py - __main__ - rakuten_stock_detect - 在庫なし:458071864001
