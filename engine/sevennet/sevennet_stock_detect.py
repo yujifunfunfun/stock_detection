@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 import time
+import csv
 
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
@@ -15,6 +16,7 @@ from common.logger import set_logger
 from common.google_spreadsheet import *
 from twitter.twitter_tweet import *
 from discord.discord_post import *
+import pandas as pd
 
 logger = set_logger(__name__)
 
@@ -43,6 +45,9 @@ def check_stock():
         if jan == '':
             pass
         else:
+            # 一度ツイートしたか確認
+            df = pd.read_csv('jan.csv',encoding='cp932',header=None)
+
             # 商品ページへ遷移
             driver.get(f"https://7net.omni7.jp/search/?keyword={jan}")
             logger.info('商品ページへ遷移しました')
@@ -50,22 +55,35 @@ def check_stock():
 
             # 在庫確認
             logger.info('在庫確認中')
-
             if driver.find_elements_by_class_name('cartBtn'):
-                
                 logger.info(f"在庫あり:{jan}")
-                name = driver.find_element_by_class_name('productName')
-                src = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/p/a/img').get_attribute("src")
-                responce = requests.get(src)
-                with open("img/" + "1.jpg", "wb") as f:
-                    f.write(responce.content)
+                if jan in df.values.astype(str):
+                    pass
+                else:
+                    name = driver.find_element_by_class_name('productName')
+                    src = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/p/a/img').get_attribute("src")
+                    responce = requests.get(src)
+                    with open("img/" + "1.jpg", "wb") as f:
+                        f.write(responce.content)
 
-                send_tweet_with_img(f'<セブンネット>\n{name.text}\n{url}')
-                send_discord_with_img(f'<セブンネット>\n{name.text}\n{url}')
-                print(f'<セブンネット>\n{name.text}\n\n{url}')
+                    send_tweet_with_img(f'<セブンネット>\n{name.text}\n{url}')
+                    send_discord_with_img(f'<セブンネット>\n{name.text}\n{url}')
+                
+                    # CSVに保存
+                    with open('jan.csv','a',newline='') as f:
+                        writer = csv.writer(f)
+                        writer.writerow([jan])
+                    print(f'<セブンネット>\n{name.text}\n\n{url}')
             else:
                 logger.info(f"在庫なし:{jan}")
+                if jan in df.values.astype(str):
+                    delete_jan = df.replace(int(jan), 'soldout')
+                    delete_jan.to_csv('jan.csv', index=False,header=None)
+
+
             
+
+
 def main():
     start_chrome()
     check_stock()
