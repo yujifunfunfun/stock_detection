@@ -33,26 +33,44 @@ yahoo_affiliate_id = os.environ.get("YAHOO_AFFILIATE_ID")
 
 
 def yahoo_stock_detect():
-
     jan_list = download_target_jan('Yahoo')
 
     for jan in jan_list:
-      request_url = f'https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid={yahoo_app_id}&query={jan}'
-
-      r = requests.get(request_url)
-      resp = r.json()
-
-      # 結果が１件以上あれば在庫ありとみなす
-      if len(resp["hits"]) >= 1:
-          name = resp["hits"][0]['name']
-          item_url = resp["hits"][0]['url']
-
-          logger.info(f"在庫あり:{jan}")
-          send_tweet(f'<Yahoo>\n{name}\n{item_url}')
-          send_discord(f'<Yahoo>\n{name}\n{item_url}')
-          print(f'<Yahoo>\n\n{name}\n\n{item_url}')
+      if jan == '':
+          pass
       else:
-          logger.info(f"在庫なし:{jan}")
+        request_url = f'https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid={yahoo_app_id}&query={jan}'
+
+        r = requests.get(request_url)
+        resp = r.json()
+
+        yahoo_df = pd.read_csv('yahoo_jan.csv',encoding='cp932',header=None)
+
+        # 結果が１件以上あれば在庫ありとみなす
+        logger.info('在庫確認中')
+        if len(resp["hits"]) >= 1:
+            if jan in yahoo_df.values.astype(str):
+                logger.info(f'ツイート済みの商品{jan}')
+            else:
+                logger.info(f"在庫あり:{jan}")
+                name = resp["hits"][0]['name']
+                item_url = resp["hits"][0]['url']
+
+                send_tweet(f'<Yahoo>\n{name}\n{item_url}')
+                send_discord(f'<Yahoo>\n{name}\n{item_url}')
+                print(f'<Yahoo>\n\n{name}\n\n{item_url}')
+            
+                # CSVに保存
+                with open('yahoo_jan.csv','a',newline='') as f:
+                    writer = csv.writer(f)
+                    writer.writerow([jan])
+        else:
+            logger.info(f"在庫なし:{jan}")
+            if jan in yahoo_df.values.astype(str):
+                delete_jan = yahoo_df.replace(int(jan), 'soldout')
+                delete_jan.to_csv('yahoo_jan.csv', index=False,header=None)
+
+
 
 if __name__ == "__main__":
     yahoo_stock_detect()

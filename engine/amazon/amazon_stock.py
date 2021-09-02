@@ -33,25 +33,32 @@ TAG    = os.environ["AMAZON_API_PARTNER_TAG"]
 COUNTRY = "JP"
 
 def amazon_stock_detect():
-
     amazon = AmazonAPI(KEY, SECRET, TAG, COUNTRY)
     jan_list = download_target_jan('Amazon')
 
     for jan in jan_list:
-      products = amazon.search_items(keywords=jan)
+        if jan == '':
+            pass
+        else:
+            products = amazon.search_items(keywords=jan)
+            amazon_df = pd.read_csv('amazon_jan.csv',encoding='cp932',header=None)
 
-      # 結果が１件以上あれば在庫ありとみなす
-      if len(products["data"][0]) >= 1:
-          name = products["data"][0].item_info.title.display_value
-          item_url = products["data"][0].detail_page_url
-          logger.info(f"在庫あり:{jan}")
-          send_tweet(f'<Amazon>\n{name}\n{item_url}')
-          send_discord(f'<Amazon>\n{name}\n{item_url}')
-          print(f'<Amazon>\n\n{name}\n\n{item_url}')
-      else:
-          logger.info(f"在庫なし:{jan}")
-
-
+            # 結果が１件以上あれば在庫ありとみなす
+            if len(products["data"][0]) >= 1:
+                if jan in amazon_df.values.astype(str):
+                    logger.info(f'ツイート済みの商品{jan}')
+                else:
+                    name = products["data"][0].item_info.title.display_value
+                    item_url = products["data"][0].detail_page_url
+                    logger.info(f"在庫あり:{jan}")
+                    send_tweet(f'<Amazon>\n{name}\n{item_url}')
+                    send_discord(f'<Amazon>\n{name}\n{item_url}')
+                    print(f'<Amazon>\n\n{name}\n\n{item_url}')
+            else:
+                logger.info(f"在庫なし:{jan}")
+                if jan in amazon_df.values.astype(str):
+                    delete_jan = amazon_df.replace(int(jan), 'soldout')
+                    delete_jan.to_csv('amazon_jan.csv', index=False,header=None)
 
 
 
