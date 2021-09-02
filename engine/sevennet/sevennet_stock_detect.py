@@ -46,7 +46,7 @@ def check_stock():
             pass
         else:
             # 一度ツイートしたか確認
-            df = pd.read_csv('jan.csv',encoding='cp932',header=None)
+            sevennet_df = pd.read_csv('jan.csv',encoding='cp932',header=None)
 
             # 商品ページへ遷移
             driver.get(f"https://7net.omni7.jp/search/?keyword={jan}")
@@ -57,7 +57,7 @@ def check_stock():
             logger.info('在庫確認中')
             if driver.find_elements_by_class_name('cartBtn'):
                 logger.info(f"在庫あり:{jan}")
-                if jan in df.values.astype(str):
+                if jan in sevennet_df.values.astype(str):
                     pass
                 else:
                     name = driver.find_element_by_class_name('productName')
@@ -76,9 +76,9 @@ def check_stock():
                     print(f'<セブンネット>\n{name.text}\n\n{url}')
             else:
                 logger.info(f"在庫なし:{jan}")
-                if jan in df.values.astype(str):
-                    delete_jan = df.replace(int(jan), 'soldout')
-                    delete_jan.to_csv('jan.csv', index=False,header=None)
+                if jan in sevennet_df.values.astype(str):
+                    delete_jan = sevennet_df.replace(int(jan), 'soldout')
+                    delete_jan.to_csv('sevennet_jan.csv', index=False,header=None)
 
 
             
