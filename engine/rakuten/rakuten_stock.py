@@ -33,7 +33,7 @@ rakuten_app_id = os.environ.get("RAKUTEN_APPLICATION_ID")
 rakuten_affiliate_id = os.environ.get("RAKUTEN_AFFILIATE_ID")
 
 
-def rakuten_stock_detect():
+def detect_rakuten_stock():
     jan_list = download_target_jan('楽天')
     for jan in jan_list:
         
@@ -44,7 +44,7 @@ def rakuten_stock_detect():
             r = requests.get(request_url)
             resp = r.json()
 
-            rakuten_df = pd.read_csv('rakuten_jan.csv',encoding='cp932',header=None)
+            rakuten_df = pd.read_csv('jan_csv/rakuten_jan.csv',encoding='cp932',header=None)
 
             # 在庫確認
             logger.info('在庫確認中')
@@ -61,15 +61,16 @@ def rakuten_stock_detect():
                     send_discord(f'<楽天>\n{name}\n{affiliate_url}')
                 
                     # CSVに保存
-                    with open('rakuten_jan.csv','a',newline='') as f:
+                    with open('jan_csv/rakuten_jan.csv','a') as f:
                         writer = csv.writer(f)
+                        writer.writerow([])
                         writer.writerow([jan])
             else:
                 logger.info(f"在庫なし:{jan}")
                 if jan in rakuten_df.values.astype(str):
                     delete_jan = rakuten_df.replace(int(jan), 'soldout')
-                    delete_jan.to_csv('rakuten_jan.csv', index=False,header=None)
+                    delete_jan.to_csv('jan_csv/rakuten_jan.csv', index=False,header=None)
 
 
 if __name__ == "__main__":
-    rakuten_stock_detect()
+    detect_rakuten_stock()

@@ -1,0 +1,10 @@
+2021-09-04 15:28:59,516 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫確認中
+2021-09-04 15:28:59,517 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫あり:4580718640010
+2021-09-04 15:28:59,914 - ERROR - twitter_tweet.py - twitter.twitter_tweet - send_tweet - [{'code': 187, 'message': 'Status is a duplicate.'}]
+2021-09-04 15:29:01,163 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫確認中
+2021-09-04 15:29:01,163 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫なし:458071864001
+2021-09-04 15:29:04,325 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫確認中
+2021-09-04 15:29:04,325 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫あり:4580718640010
+2021-09-04 15:29:04,751 - ERROR - twitter_tweet.py - twitter.twitter_tweet - send_tweet - [{'code': 187, 'message': 'Status is a duplicate.'}]
+2021-09-04 15:29:06,775 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫確認中
+2021-09-04 15:29:06,775 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫なし:458071864001

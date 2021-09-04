@@ -12,6 +12,7 @@ from amazon.paapi import AmazonAPI
 import pprint
 import json
 import re
+import csv
 
 from dotenv import load_dotenv
 from common.logger import set_logger
@@ -32,7 +33,7 @@ SECRET = os.environ["AMAZON_API_SECRET"]
 TAG    = os.environ["AMAZON_API_PARTNER_TAG"]
 COUNTRY = "JP"
 
-def amazon_stock_detect():
+def detect_amazon_stock():
     amazon = AmazonAPI(KEY, SECRET, TAG, COUNTRY)
     jan_list = download_target_jan('Amazon')
 
@@ -41,7 +42,7 @@ def amazon_stock_detect():
             pass
         else:
             products = amazon.search_items(keywords=jan)
-            amazon_df = pd.read_csv('amazon_jan.csv',encoding='cp932',header=None)
+            amazon_df = pd.read_csv('jan_csv/amazon_jan.csv',encoding='cp932',header=None)
 
             # 結果が１件以上あれば在庫ありとみなす
             if len(products["data"][0]) >= 1:
@@ -53,14 +54,16 @@ def amazon_stock_detect():
                     logger.info(f"在庫あり:{jan}")
                     send_tweet(f'<Amazon>\n{name}\n{item_url}')
                     send_discord(f'<Amazon>\n{name}\n{item_url}')
-                    print(f'<Amazon>\n\n{name}\n\n{item_url}')
+                    with open('jan_csv/amazon_jan.csv','a') as f:
+                        writer = csv.writer(f)
+                        writer.writerow([])
+                        writer.writerow([jan])
             else:
                 logger.info(f"在庫なし:{jan}")
                 if jan in amazon_df.values.astype(str):
                     delete_jan = amazon_df.replace(int(jan), 'soldout')
-                    delete_jan.to_csv('amazon_jan.csv', index=False,header=None)
-
+                    delete_jan.to_csv('jan_csv/amazon_jan.csv', index=False,header=None)
 
 
 if __name__ == "__main__":
-    amazon_stock_detect()
+    detect_amazon_stock()

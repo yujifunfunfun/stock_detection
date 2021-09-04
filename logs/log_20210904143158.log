@@ -1,0 +1,8 @@
+2021-09-04 14:32:02,869 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫確認中
+2021-09-04 14:32:02,869 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - ツイート済みの商品4580718640010
+2021-09-04 14:32:03,315 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫確認中
+2021-09-04 14:32:03,315 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫なし:458071864001
+2021-09-04 14:32:06,714 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫確認中
+2021-09-04 14:32:06,715 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - ツイート済みの商品4580718640010
+2021-09-04 14:32:07,063 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫確認中
+2021-09-04 14:32:07,064 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫なし:458071864001

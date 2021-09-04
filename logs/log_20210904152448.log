@@ -1,0 +1,1 @@
+2021-09-04 15:24:53,332 - ERROR - twitter_tweet.py - twitter.twitter_tweet - send_tweet - [{'code': 187, 'message': 'Status is a duplicate.'}]

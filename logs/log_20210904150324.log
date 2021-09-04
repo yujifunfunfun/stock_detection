@@ -1,0 +1,14 @@
+2021-09-04 15:03:29,226 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫確認中
+2021-09-04 15:03:29,226 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - ツイート済みの商品4580718640010
+2021-09-04 15:03:29,659 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫確認中
+2021-09-04 15:03:29,659 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫なし:458071864001
+2021-09-04 15:03:32,794 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫確認中
+2021-09-04 15:03:32,795 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - ツイート済みの商品4580718640010
+2021-09-04 15:03:33,164 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫確認中
+2021-09-04 15:03:33,164 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫なし:458071864001
+2021-09-04 15:05:41,129 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 商品ページへ遷移しました
+2021-09-04 15:05:44,134 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 在庫確認中
+2021-09-04 15:05:44,200 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 在庫なし:4902370545203
+2021-09-04 15:05:51,751 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 商品ページへ遷移しました
+2021-09-04 15:05:54,756 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 在庫確認中
+2021-09-04 15:05:54,795 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 在庫あり:4534530127631

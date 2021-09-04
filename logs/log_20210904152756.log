@@ -1,0 +1,16 @@
+2021-09-04 15:28:01,169 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫確認中
+2021-09-04 15:28:01,170 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫あり:4580718640010
+2021-09-04 15:28:01,680 - ERROR - twitter_tweet.py - twitter.twitter_tweet - send_tweet - [{'code': 187, 'message': 'Status is a duplicate.'}]
+2021-09-04 15:28:02,671 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫確認中
+2021-09-04 15:28:02,671 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫なし:458071864001
+2021-09-04 15:28:06,926 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫確認中
+2021-09-04 15:28:06,926 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫あり:4580718640010
+2021-09-04 15:28:07,401 - ERROR - twitter_tweet.py - twitter.twitter_tweet - send_tweet - [{'code': 187, 'message': 'Status is a duplicate.'}]
+2021-09-04 15:28:08,289 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫確認中
+2021-09-04 15:28:08,290 - INFO - yahoo_stock.py - engine.yahoo.yahoo_stock - detect_yahoo_stock - 在庫なし:458071864001
+2021-09-04 15:28:27,240 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 商品ページへ遷移しました
+2021-09-04 15:28:30,246 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 在庫確認中
+2021-09-04 15:28:30,297 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 在庫なし:4902370545203
+2021-09-04 15:28:32,605 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 商品ページへ遷移しました
+2021-09-04 15:28:35,610 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 在庫確認中
+2021-09-04 15:28:35,646 - INFO - sevennet_stock.py - engine.sevennet.sevennet_stock - check_stock - 在庫あり:4534530127631

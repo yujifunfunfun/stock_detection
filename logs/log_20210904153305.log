@@ -1,0 +1,3 @@
+2021-09-04 15:33:12,454 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫確認中
+2021-09-04 15:33:12,455 - INFO - rakuten_stock.py - engine.rakuten.rakuten_stock - detect_rakuten_stock - 在庫あり:4580718640010
+2021-09-04 15:33:13,110 - ERROR - twitter_tweet.py - twitter.twitter_tweet - send_tweet - [{'code': 187, 'message': 'Status is a duplicate.'}]
