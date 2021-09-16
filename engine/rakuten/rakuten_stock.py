@@ -68,7 +68,7 @@ def detect_rakuten_stock():
             else:
                 logger.info(f"在庫なし:{jan}")
                 if jan in rakuten_df.values.astype(str):
-                    delete_jan = rakuten_df.replace(int(jan), 'soldout')
+                    delete_jan = rakuten_df.replace(jan, 'soldout')
                     delete_jan.to_csv('jan_csv/rakuten_jan.csv', index=False,header=None)
 
 
