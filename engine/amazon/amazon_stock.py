@@ -61,7 +61,7 @@ def detect_amazon_stock():
             else:
                 logger.info(f"在庫なし:{jan}")
                 if jan in amazon_df.values.astype(str):
-                    delete_jan = amazon_df.replace(int(jan), 'soldout')
+                    delete_jan = amazon_df.replace(jan, 'soldout')
                     delete_jan.to_csv('jan_csv/amazon_jan.csv', index=False,header=None)
 
 
