@@ -83,7 +83,7 @@ def check_stock():
             else:
                 logger.info(f"在庫なし:{jan}")
                 if jan in sevennet_df.values.astype(str):
-                    delete_jan = sevennet_df.replace(int(jan), 'soldout')
+                    delete_jan = sevennet_df.replace(jan, 'soldout')
                     delete_jan.to_csv('jan_csv/sevennet_jan.csv', index=False,header=None)
 
 
