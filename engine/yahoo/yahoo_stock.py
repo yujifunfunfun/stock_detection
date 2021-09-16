@@ -69,7 +69,7 @@ def detect_yahoo_stock():
         else:
             logger.info(f"在庫なし:{jan}")
             if jan in yahoo_df.values.astype(str):
-                delete_jan = yahoo_df.replace(int(jan), 'soldout')
+                delete_jan = yahoo_df.replace(jan, 'soldout')
                 delete_jan.to_csv('jan_csv/yahoo_jan.csv', index=False,header=None)
 
 
