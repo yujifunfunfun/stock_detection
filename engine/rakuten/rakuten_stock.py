@@ -11,6 +11,7 @@ import urllib.parse
 import os
 from os.path import join, dirname
 import pandas as pd
+import time
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
