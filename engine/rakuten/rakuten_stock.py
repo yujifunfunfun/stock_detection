@@ -41,6 +41,7 @@ def detect_rakuten_stock():
             pass
         else:
             request_url = f'https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706?applicationId={rakuten_app_id}&keyword={jan}&affiliateId={rakuten_affiliate_id}'
+            time.sleep(0.2)
             r = requests.get(request_url)
             resp = r.json()
 
@@ -48,6 +49,7 @@ def detect_rakuten_stock():
 
             # 在庫確認
             logger.info('在庫確認中')
+            
             if len(resp["Items"]) >= 1:
                 if jan in rakuten_df.values.astype(str):
                     logger.info(f'ツイート済みの商品{jan}')
