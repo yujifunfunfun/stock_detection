@@ -85,7 +85,7 @@ def check_stock():
                 if jan in sevennet_df.values.astype(str):
                     delete_jan = sevennet_df.replace(jan, 'soldout')
                     delete_jan.to_csv('jan_csv/sevennet_jan.csv', index=False,header=None)
-
+    driver.quit()
 
 def detect_sevennet_stock():
     start_chrome()
