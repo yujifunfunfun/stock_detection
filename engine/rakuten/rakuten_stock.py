@@ -42,7 +42,7 @@ def detect_rakuten_stock():
             pass
         else:
             request_url = f'https://app.rakuten.co.jp/services/api/IchibaItem/Search/20170706?applicationId={rakuten_app_id}&keyword={jan}&affiliateId={rakuten_affiliate_id}'
-            time.sleep(0.5)
+            time.sleep(0.4)
             r = requests.get(request_url)
             resp = r.json()
 
