@@ -56,7 +56,6 @@ def check_stock():
             # 商品ページへ遷移
             driver.get(f"https://7net.omni7.jp/search/?keyword={jan}")
             logger.info('商品ページへ遷移しました')
-            time.sleep(3)
 
             # 在庫確認
             logger.info('在庫確認中')
