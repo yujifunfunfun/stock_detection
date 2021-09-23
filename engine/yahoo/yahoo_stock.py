@@ -39,8 +39,7 @@ def detect_yahoo_stock():
       if jan == '':
           pass
       else:
-        request_url = f'https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid={yahoo_app_id}&query={jan}'
-
+        request_url = f'https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid={yahoo_app_id}&affiliate_type=vc&affiliate_id={yahoo_affiliate_id}&query={jan}'
         r = requests.get(request_url)
         resp = r.json()
 
