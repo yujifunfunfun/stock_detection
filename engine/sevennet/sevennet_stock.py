@@ -52,7 +52,6 @@ def check_stock():
         else:
             # 一度ツイートしたか確認
             sevennet_df = pd.read_csv('jan_csv/sevennet_jan.csv',encoding='cp932',header=None)
-
             # 商品ページへ遷移
             driver.get(f"https://7net.omni7.jp/search/?keyword={jan}")
             logger.info('商品ページへ遷移しました')

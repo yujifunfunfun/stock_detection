@@ -1,0 +1,13 @@
+2021-09-29 14:51:52,595 - INFO - test.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-29 14:51:52,595 - INFO - test.py - __main__ - check_stock - 在庫確認中
+2021-09-29 14:51:52,595 - INFO - test.py - __main__ - check_stock - <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+<html><head>
+<title>503 Service Unavailable</title>
+</head><body>
+<h1>Service Unavailable</h1>
+<p>The server is temporarily unable to service your
+request due to maintenance downtime or capacity
+problems. Please try again later.</p>
+</body></html>
+

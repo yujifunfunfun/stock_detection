@@ -27,10 +27,12 @@ def download_target_jan(site):
         worksheet = gc.open(SHEET_NAME).get_worksheet(2)
     elif site == 'セブンネット':
         worksheet = gc.open(SHEET_NAME).get_worksheet(3)
+    elif site == 'ポケモンセンター':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(4)
 
-    url_list = worksheet.col_values(1)
+    jan_list = worksheet.col_values(1)
 
-    return url_list
+    return jan_list
 
 def download_affiliate_url(site):
 
@@ -46,7 +48,9 @@ def download_affiliate_url(site):
         worksheet = gc.open(SHEET_NAME).get_worksheet(2)
     elif site == 'セブンネット':
         worksheet = gc.open(SHEET_NAME).get_worksheet(3)
-
+    elif site == 'ポケモンセンター':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(4)
+      
     url_list = worksheet.col_values(2)
 
     return url_list

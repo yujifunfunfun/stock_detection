@@ -1,0 +1,8 @@
+2021-09-29 15:15:33,025 - INFO - pokemon_stock.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-29 15:15:33,025 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫確認中
+2021-09-29 15:15:33,025 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫あり:4521329322780
+2021-09-29 15:15:33,037 - INFO - pokemon_stock.py - __main__ - check_stock - ピカチュウ
+2021-09-29 15:15:33,250 - INFO - pokemon_stock.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-29 15:15:33,250 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫確認中
+2021-09-29 15:15:33,267 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫あり:45213293227
+2021-09-29 15:15:33,268 - INFO - pokemon_stock.py - __main__ - check_stock - ツイート済みの商品

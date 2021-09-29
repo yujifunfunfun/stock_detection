@@ -1,0 +1,4 @@
+2021-09-29 15:32:35,757 - INFO - test.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-29 15:32:35,757 - INFO - test.py - __main__ - check_stock - 在庫確認中
+2021-09-29 15:32:35,772 - INFO - test.py - __main__ - check_stock - <img alt="ポケモンカードゲーム デッキシールド ダイマックスミュウ" class="item_image" src="static/product_image/4521329322780/4521329322780_S.jpg" title="ポケモンカードゲーム デッキシールド ダイマックスミュウ" width="180"/>
+2021-09-29 15:32:35,773 - INFO - test.py - __main__ - check_stock - ポケモンカードゲーム デッキシールド ダイマックスミュウ

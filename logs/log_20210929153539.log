@@ -1,0 +1,7 @@
+2021-09-29 15:35:43,497 - INFO - pokemon_stock.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-29 15:35:43,497 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫確認中
+2021-09-29 15:35:43,502 - INFO - pokemon_stock.py - __main__ - check_stock - ツイート済みの商品4521329322780
+2021-09-29 15:35:43,747 - INFO - pokemon_stock.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-29 15:35:43,748 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫確認中
+2021-09-29 15:35:43,753 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫なし:45213293227
+2021-09-29 15:35:43,793 - INFO - pokemon_stock.py - __main__ - check_stock - 再売り切れ:45213293227

@@ -7,3 +7,5 @@ python-amazon-sp-api
 python-dotenv
 selenium
 webdriver_manager
+beautifulsoup4
+lxml

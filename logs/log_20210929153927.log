@@ -1,0 +1,8 @@
+2021-09-29 15:39:31,350 - INFO - pokemon_stock.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-29 15:39:31,350 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫確認中
+2021-09-29 15:39:31,368 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫あり:4521329322780
+2021-09-29 15:39:31,368 - INFO - pokemon_stock.py - __main__ - check_stock - ポケモンカードゲーム デッキシールド ダイマックスミュウ
+2021-09-29 15:39:31,368 - INFO - pokemon_stock.py - __main__ - check_stock - https://www.pokemoncenter-online.com/?main_page=product_list&from=search_form&pokemon1=&release=&stock=on&cat1=&keyword=4521329322780&p_from=&p_to=&x=82&y=16
+2021-09-29 15:39:31,596 - INFO - pokemon_stock.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-29 15:39:31,596 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫確認中
+2021-09-29 15:39:31,608 - INFO - pokemon_stock.py - __main__ - check_stock - 在庫なし:45213293227

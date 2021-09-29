@@ -1,0 +1,3 @@
+2021-09-29 14:59:12,046 - INFO - test.py - __main__ - check_stock - 商品ページへ遷移しました
+2021-09-29 14:59:12,047 - INFO - test.py - __main__ - check_stock - 在庫確認中
+2021-09-29 14:59:12,048 - INFO - test.py - __main__ - check_stock - <p class="name">ピカチュウ</p>
