@@ -5,7 +5,7 @@ from datetime import datetime
 import glob
 
 
-LOG_FORMAT='%(asctime)s - %(levelname)s - %(filename)s - %(name)s - %(funcName)s - %(message)s'
+LOG_FORMAT='%(asctime)s - %(levelname)s - %(filename)s - %(name)s - %(funcName)s - %(lineno)s - %(message)s'
 LOG_DIR_NAME='logs'
 MAX_LOG_COUNT=100
 
