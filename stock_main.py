@@ -6,5 +6,5 @@ from engine.sevennet.sevennet_stock import detect_sevennet_stock
 
 detect_rakuten_stock()
 detect_yahoo_stock()
-detect_pokemoncenter_stock
+detect_pokemoncenter_stock()
 detect_sevennet_stock()

@@ -36,7 +36,9 @@ rakuten_affiliate_id = os.environ.get("RAKUTEN_AFFILIATE_ID")
 
 def detect_rakuten_stock():
     jan_list = download_target_jan('楽天')
-    for jan in jan_list:
+    max_price_list = download_max_price('楽天')
+    
+    for jan,max_price in zip(jan_list,max_price_list):
         
         if jan == '':
             pass
@@ -54,12 +56,11 @@ def detect_rakuten_stock():
             if len(resp["Items"]) >= 1:
                 if jan in rakuten_df.values.astype(str):
                     logger.info(f'ツイート済みの商品{jan}')
-                else:
+                elif item['itemPrice'] < int(max_price) :
                     logger.info(f"在庫あり:{jan}")
                     item = resp['Items'][0]['Item']
                     name = item['itemName']
                     affiliate_url = item['affiliateUrl']
-
                     send_tweet(f'<楽天>\n{name}\n{affiliate_url}')
                     send_discord(f'<楽天>\n{name}\n{affiliate_url}')
                 

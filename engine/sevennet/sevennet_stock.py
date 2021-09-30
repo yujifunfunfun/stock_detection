@@ -18,6 +18,7 @@ from twitter.twitter_tweet import *
 from discord.discord_post import *
 import pandas as pd
 import random
+import re
 
 logger = set_logger(__name__)
 
@@ -44,8 +45,9 @@ def start_chrome():
 def check_stock():
     jan_list = download_target_jan('セブンネット')
     affiliate_urls = download_affiliate_url('セブンネット')
+    max_price_list = download_max_price('セブンネット')
 
-    for jan,url in zip(jan_list,affiliate_urls):
+    for jan,url,max_price in zip(jan_list,affiliate_urls,max_price_list):
         
         if jan == '':
             pass
@@ -53,17 +55,20 @@ def check_stock():
             # 一度ツイートしたか確認
             sevennet_df = pd.read_csv('jan_csv/sevennet_jan.csv',encoding='cp932',header=None)
             # 商品ページへ遷移
-            driver.get(f"https://7net.omni7.jp/search/?keyword={jan}")
+            driver.get(f"https://7net.omni7.jp/search/?keyword={jan}&sort=low")
             logger.info('商品ページへ遷移しました')
             time.sleep(1)
-
             # 在庫確認
             logger.info('在庫確認中')
             if driver.find_elements_by_class_name('cartBtn'):
+                price = driver.find_element_by_class_name('productPrice').text
+                p = r'税込(.*)円' 
+                price = re.search(p, price).group(1)
+                price = price.replace(',','')
                 logger.info(f"在庫あり:{jan}")
                 if jan in sevennet_df.values.astype(str):
                     logger.info('ツイート済みの商品')
-                else:
+                elif int(price) < int(max_price):
                     name = driver.find_element_by_class_name('productName')
                     src = driver.find_element_by_xpath('//*[@id="mainContent"]/div[5]/div[2]/div/div[10]/div/div[3]/div[2]/div/div/div/p/a/img').get_attribute("src")
                     responce = requests.get(src)

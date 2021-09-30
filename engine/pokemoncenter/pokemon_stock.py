@@ -11,6 +11,7 @@ from common.google_spreadsheet import *
 from twitter.twitter_tweet import *
 from discord.discord_post import *
 import pandas as pd
+import re
 
 logger = set_logger(__name__)
 
@@ -18,8 +19,9 @@ def check_stock():
 
     jan_list = download_target_jan('ポケモンセンター')
     affiliate_urls = download_affiliate_url('ポケモンセンター')
+    max_price_list = download_max_price('ポケモンセンター')
 
-    for jan,url in zip(jan_list,affiliate_urls):        
+    for jan,url,max_price in zip(jan_list,affiliate_urls,max_price_list):        
         if jan == '':
             pass
         else:
@@ -33,20 +35,19 @@ def check_stock():
             res = requests.get(item_url,headers={"User-Agent": ua})
             soup = BeautifulSoup(res.text, "html.parser")
             logger.info('商品ページへ遷移しました')
-
+            price = soup.find('p', class_='price').text
+            p = r'(.*)円' 
+            price = re.search(p, price).group(1)
             # 在庫確認
             logger.info('在庫確認中')
             if soup.find('img',class_='item_image'):
                 if jan in pokemon_df.values.astype(str):
                     logger.info(f'ツイート済みの商品{jan}')
-                else:
+                elif int(price) < max_price:
                     name = soup.find_all('p', class_='name')
                     logger.info(f"在庫あり:{jan}")
-                    logger.info(name[-1].text)
-                    logger.info(url)
-
-                    send_tweet_with_img(f'<ポケモンセンターオンライン>\n{name[-1].text}\n{url}')
-                    send_discord_with_img(f'<ポケモンセンターオンライン>\n{name[-1].text}\n{url}')
+                    send_tweet(f'<ポケモンセンターオンライン>\n{name[-1].text}\n{url}')
+                    send_discord(f'<ポケモンセンターオンライン>\n{name[-1].text}\n{url}')
                 
                     # CSVに保存
                     with open('jan_csv/pokemon_jan.csv','a',newline='') as f:

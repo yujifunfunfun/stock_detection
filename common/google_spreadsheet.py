@@ -55,4 +55,24 @@ def download_affiliate_url(site):
 
     return url_list
 
+def download_max_price(site):
+    scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(JSON_PATH, scope)
+    gc = gspread.authorize(credentials)
+
+    if site == '楽天':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(0)
+        max_price_list = worksheet.col_values(2)
+    elif site == 'Yahoo':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(1)
+        max_price_list = worksheet.col_values(2)
+    elif site == 'Amazon':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(2)
+    elif site == 'セブンネット':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(3)
+        max_price_list = worksheet.col_values(3)
+    elif site == 'ポケモンセンター':
+        worksheet = gc.open(SHEET_NAME).get_worksheet(4)
+        max_price_list = worksheet.col_values(3)
+    return max_price_list
 

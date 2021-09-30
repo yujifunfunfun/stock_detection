@@ -34,12 +34,13 @@ yahoo_affiliate_id = os.environ.get("YAHOO_AFFILIATE_ID")
 
 def detect_yahoo_stock():
     jan_list = download_target_jan('Yahoo')
+    max_price_list = download_max_price('Yahoo')
 
-    for jan in jan_list:
+    for jan,max_price in zip(jan_list,max_price_list):
       if jan == '':
           pass
       else:
-        request_url = f'https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid={yahoo_app_id}&affiliate_type=vc&affiliate_id={yahoo_affiliate_id}&query={jan}'
+        request_url = f'https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid={yahoo_app_id}&affiliate_type=vc&affiliate_id={yahoo_affiliate_id}&query={jan}&sort=%2Bprice'
         r = requests.get(request_url)
         resp = r.json()
 
@@ -50,7 +51,7 @@ def detect_yahoo_stock():
         if len(resp["hits"]) >= 1:
             if jan in yahoo_df.values.astype(str):
                 logger.info(f'ツイート済みの商品{jan}')
-            else:
+            elif resp["hits"][0]['price'] < int(max_price) :
                 logger.info(f"在庫あり:{jan}")
                 name = resp["hits"][0]['name']
                 item_url = resp["hits"][0]['url']
@@ -64,7 +65,6 @@ def detect_yahoo_stock():
                     writer = csv.writer(f)
                     writer.writerow([])
                     writer.writerow([jan])
-
         else:
             logger.info(f"在庫なし:{jan}")
             if jan in yahoo_df.values.astype(str):
