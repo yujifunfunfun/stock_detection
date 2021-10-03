@@ -34,7 +34,7 @@ def check_stock():
                     "Chrome/60.0.3112.113"
             item_url = f'https://www.pokemoncenter-online.com/?main_page=product_list&keyword={jan}&from=search_form&stock=on'
             res = requests.get(item_url,headers={"User-Agent": ua})
-            time.sleep()
+            time.sleep(2)
             soup = BeautifulSoup(res.text, "html.parser")
             logger.info('商品ページへ遷移しました')
             price = soup.find('p', class_='price').text
