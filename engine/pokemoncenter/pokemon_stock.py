@@ -12,6 +12,7 @@ from twitter.twitter_tweet import *
 from discord.discord_post import *
 import pandas as pd
 import re
+import time
 
 logger = set_logger(__name__)
 
@@ -33,6 +34,7 @@ def check_stock():
                     "Chrome/60.0.3112.113"
             item_url = f'https://www.pokemoncenter-online.com/?main_page=product_list&keyword={jan}&from=search_form&stock=on'
             res = requests.get(item_url,headers={"User-Agent": ua})
+            time.sleep()
             soup = BeautifulSoup(res.text, "html.parser")
             logger.info('商品ページへ遷移しました')
             price = soup.find('p', class_='price').text
